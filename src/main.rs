@@ -1,21 +1,29 @@
 use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
-
+use std::fmt;
 
 
 struct User {
     name: String,
     email: String,
-    age: u32,
+    age: String,
 }
 
-fn player_name(name: String , email: String, age: u32) -> User {
-    User{
+impl fmt::Display for User{
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result{
+        write!(f, "User details: name {}, email {}, age{}", self.name, self.email, self.age)
+    }
+}
+
+fn player_detail_response(name: String , email: String, age: String) {
+   let mut user1 = User{
         name,
         email,
         age,
-    }
+    };
+
+    println!("{}", user1);
 }
 
 fn player_details_acquisition(){
@@ -33,8 +41,8 @@ fn player_details_acquisition(){
     let mut age = String::new();
     io::stdin().read_line(&mut age).expect("Cannot read input");
 
-    println!("the following are your details name:{}, email:{}, age{}", name, email, age);
-
+    //println!("the following are your details name:{}, email:{}, age{}", name, email, age);
+    player_detail_response(name, email, age);
 
 }
 

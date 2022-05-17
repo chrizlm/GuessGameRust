@@ -4,8 +4,46 @@ use rand::Rng;
 
 
 
+struct User {
+    name: String,
+    email: String,
+    age: u32,
+}
+
+fn player_name(name: String , email: String, age: u32) -> User {
+    User{
+        name,
+        email,
+        age,
+    }
+}
+
+fn player_details_acquisition(){
+
+    //enter name and email and age
+    println!("Enter your name:");
+    let mut name = String::new();
+    io::stdin().read_line(&mut name).expect("cannot read input");
+    
+    println!("Enter your email:");
+    let mut email = String::new();
+    io::stdin().read_line(&mut email).expect("cannot read input");
+
+    println!("Enter your age:");
+    let mut age = String::new();
+    io::stdin().read_line(&mut age).expect("Cannot read input");
+
+    println!("the following are your details name:{}, email:{}, age{}", name, email, age);
+
+
+}
+
+
 fn main(){
     println!("Guessing game rust!");
+
+    player_details_acquisition();
+
 
     let expected_guess = rand::thread_rng().gen_range(1,101);
 

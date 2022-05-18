@@ -48,6 +48,14 @@ fn player_details_acquisition(){
 
 
 fn main(){
+
+    let rec = Rectangle{
+        width: 30,
+        height: 20,
+    };
+
+    are_calc(&rec);
+    println!("{:#?}", rec);
     println!("Guessing game rust!");
 
     player_details_acquisition();
@@ -89,12 +97,16 @@ fn main(){
 
 
 
+#[derive(Debug)]
+struct Rectangle{
+    height: u32,
+    width: u32,
+}
 
 
-
-
-
-
+fn are_calc(rec1: &Rectangle)-> u32{
+    rec1.height * rec1.width
+}
 
 
 
